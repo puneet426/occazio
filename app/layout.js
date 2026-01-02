@@ -2,6 +2,9 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import Header from "@/components/header";
+import { ConvexClientProvider } from "./ConvexClientProvider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 
 
@@ -17,6 +20,14 @@ export default function RootLayout({ children }) {
         className={`bg-linear-to-br from-gray-950 via-zinc-900 to-stone-900`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+           <ClerkProvider  appearance={{
+     theme: dark,
+   }}>
+          <ConvexClientProvider>
+           
+
+         
+          
         {/* Header */}
         <Header/>
         <main className="relative min-h-screen container mx-auto pt-40 md:pt-32">
@@ -33,6 +44,9 @@ export default function RootLayout({ children }) {
           <div className="text-sm text-gray-400">Made by Puneet Tiwari</div>
         </footer>
         </main>
+      
+         </ConvexClientProvider>
+           </ClerkProvider>
         </ThemeProvider>
         
       </body>
