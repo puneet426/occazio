@@ -5,6 +5,7 @@ import Header from "@/components/header";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import Footer from "@/components/footer";
 
 
 
@@ -40,9 +41,7 @@ export default function RootLayout({ children }) {
 
         <div className="relative z-10 min-h-[70vh]">{children}</div>
         {/* Footer */}
-        <footer className="border-t border-gray-800/50 py-8 px-6 max-w-7xl mx-auto">
-          <div className="text-sm text-gray-400">Made by Puneet Tiwari</div>
-        </footer>
+        <Footer/>
         </main>
       
          </ConvexClientProvider>
