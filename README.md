@@ -9,7 +9,6 @@ Designed with scalability and performance in mind, Occazio serves both **event o
 
 ## 🖼️ Application Preview
 
-> 📌 Place screenshots inside a `screenshots/` directory at the project root.
 
 ![Occazio Front Page](/public/home.png)
 ![Occazio Explore Page](/public/explore.png)
