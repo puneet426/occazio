@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       <body
         className={`bg-linear-to-br from-gray-950 via-zinc-900 to-stone-900`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
            <ClerkProvider  appearance={{
      theme: dark,
    }}>
