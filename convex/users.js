@@ -62,7 +62,6 @@ export const getCurrentUser = query({
       return null;
     }
 
-    // 🔹 Lookup by tokenIdentifier
     const user = await ctx.db
       .query("users")
       .withIndex("by_token", (q) =>
@@ -70,11 +69,8 @@ export const getCurrentUser = query({
       )
       .unique();
 
-    if (!user) {
-      throw new Error("User not found");
-    }
-
-    return user;
+   
+    return user ?? null;
   },
 });
 
