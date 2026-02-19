@@ -121,7 +121,7 @@ export default function CreateEventPage() {
 
   const handleColorClick = (color) => {
     // If not default color and user doesn't have Pro
-    if (color !== "#1e3a8a" && !hasPro) {
+    if (color !== "#000000" && !hasPro) {
       setUpgradeReason("color");
       setShowUpgradeModal(true);
       return;
