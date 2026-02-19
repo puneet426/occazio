@@ -102,7 +102,7 @@ export default function EventDetailPage() {
   return (
     <div
       style={{
-        backgroundColor: event.themeColor || "#1e3a8a",
+        backgroundColor: event.themeColor || "#000000",
       }}
       className="min-h-screen py-8 -mt-6 md:-mt-16 lg:-mx-5"
     >
