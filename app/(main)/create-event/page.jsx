@@ -115,8 +115,8 @@ export default function CreateEventPage() {
 
   // Color presets - show all for Pro, only default for Free
   const colorPresets = [
-    "#1e3a8a", // Default color (always available)
-    ...(hasPro ? ["#4c1d95", "#065f46", "#92400e", "#7f1d1d", "#831843","#070808"] : []),
+    "#ad3e18","#0f0e0e","#065f46", "#92400e", // Default color (always available)
+    ...(hasPro ? ["#4c1d95",  "#7f1d1d", "#831843","#070808"] : []),
   ];
 
   const handleColorClick = (color) => {
