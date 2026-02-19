@@ -15,6 +15,7 @@ export default function EventCard({
   variant = "grid", // "grid" or "list"
   action = null, // "event" | "ticket" | null
   className = "",
+  
 }) {
   // List variant (compact horizontal layout)
   if (variant === "list") {
