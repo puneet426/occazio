@@ -58,7 +58,7 @@ const eventSchema = z.object({
   ticketType: z.enum(["free", "paid"]).default("free"),
   ticketPrice: z.number().optional(),
   coverImage: z.string().optional(),
-  themeColor: z.string().default(["#000000","#1e3a8a","#065f46","#ad3e18"]),
+  themeColor: z.string().default("#000000"),
 });
 
 export default function CreateEventPage() {
@@ -115,7 +115,7 @@ export default function CreateEventPage() {
 
   // Color presets - show all for Pro, only default for Free
   const colorPresets = [
-    "#000000","#1e3a8a","#065f46", "#ad3e18", // Default color (always available)
+    "#000000", // Default color (always available)
     ...(hasPro ? ["#4c1d95",  "#7f1d1d", "#831843","#070808"] : []),
   ];
 
