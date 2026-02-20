@@ -252,5 +252,3 @@ Contributions, issues, and feature requests are welcome.
 ⭐ If you like **Occazio**, consider starring the repository!
 
 
-proxy.js
-``````

@@ -10,8 +10,13 @@ import Footer from "@/components/footer";
 
 
 export const metadata = {
-  title: "Occazio",
-  description: "Discover and create amazing events",
+  title : "Occazi – AI-Powered Full-Stack Event Management Platform",
+  description : "Occazi is a AI-powered event management platform that simplifies the complete lifecycle of an event — from intelligent creation to real-time attendee management and analytics.",
+  author:[{name:"Puneet Tiwari"}],
+  keywords:["occazi", "occazio","event management", "codeforge", "niamt","codeforgeniamt","puneet","puneet tiwari"],
+  icons:{
+    icon:"/occazi.png"
+  },
 };
 
 export default function RootLayout({ children }) {
