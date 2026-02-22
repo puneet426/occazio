@@ -159,7 +159,7 @@ export default function CreateEventPage() {
       }
 
       // Check if trying to use custom color without Pro
-      if (data.themeColor !== "#1e3a8a" && !hasPro) {
+      if (data.themeColor !== "#000000" && !hasPro) {
         setUpgradeReason("color");
         setShowUpgradeModal(true);
         return;
