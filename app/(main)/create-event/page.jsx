@@ -89,7 +89,7 @@ export default function CreateEventPage() {
       locationType: "physical",
       ticketType: "free",
       capacity: 50,
-      themeColor: "#1e3a8a",
+      themeColor: "#000000",
       category: "",
       state: "",
       city: "",
@@ -152,7 +152,7 @@ export default function CreateEventPage() {
       }
 
       // Check event limit for Free users
-      if (!hasPro && currentUser?.freeEventsCreated >= 1) {
+      if (!hasPro && currentUser?.freeEventsCreated >= 3) {
         setUpgradeReason("limit");
         setShowUpgradeModal(true);
         return;
@@ -260,7 +260,7 @@ export default function CreateEventPage() {
                   key={color}
                   type="button"
                   className={`w-10 h-10 rounded-full border-2 transition-all ${
-                    !hasPro && color !== "#1e3a8a"
+                    !hasPro && color !== "#000000"
                       ? "opacity-40 cursor-not-allowed"
                       : "hover:scale-110"
                   }`}
@@ -270,7 +270,7 @@ export default function CreateEventPage() {
                   }}
                   onClick={() => handleColorClick(color)}
                   title={
-                    !hasPro && color !== "#1e3a8a"
+                    !hasPro && color !== "#000000"
                       ? "Upgrade to Pro for custom colors"
                       : ""
                   }
