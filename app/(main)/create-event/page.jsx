@@ -214,7 +214,7 @@ export default function CreateEventPage() {
           <h1 className="text-4xl font-bold">Create Event</h1>
           {!hasPro && (
             <p className="text-sm text-muted-foreground mt-2">
-              Free: {currentUser?.freeEventsCreated || 0}/1 events created
+              Free: {currentUser?.freeEventsCreated || 5}/1 events created
             </p>
           )}
         </div>
