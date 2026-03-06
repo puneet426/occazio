@@ -27,6 +27,7 @@
     "convex": "^1.31.2",
     "country-state-city": "^3.2.1",
     "date-fns": "^4.1.0",
+    "dodopayments": "^2.22.6",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.6.0",
     "html5-qrcode": "^2.3.8",

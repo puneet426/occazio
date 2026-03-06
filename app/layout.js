@@ -22,37 +22,32 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`bg-linear-to-br from-gray-950 via-zinc-900 to-stone-900`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-           <ClerkProvider  appearance={{
-     theme: dark,
-   }}>
-          <ConvexClientProvider>
-           
+     <body className="bg-[#030303] text-zinc-200 antialiased selection:bg-blue-500/30">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ClerkProvider appearance={{ theme: dark }}>
+            <ConvexClientProvider>
+              
+              {/* Premium Background Elements */}
+<div className="fixed inset-0 -z-10 pointer-events-none">
+  {/* The Grid Layer */}
+  <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:32px_32px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+  
+  {/* The Primary Glow */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1200px] h-[500px] bg-violet-600/10 blur-[140px] rounded-full opacity-60" />
+</div>
 
-         
-          
-        {/* Header */}
-        <Header/>
-        <main className="relative min-h-screen container mx-auto pt-40 md:pt-32">
-        {/* glow */}
-        <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-pink-600/20 rounded-full blur-3xl"/>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-600/20 rounded-full blur-3xl"/>
-        </div>
-        
+              <Header />
 
-        <div className="relative z-10 min-h-[70vh]">{children}</div>
-        {/* Footer */}
-        <Footer/>
-        </main>
-      
-         </ConvexClientProvider>
-           </ClerkProvider>
+              <main className="relative min-h-screen container mx-auto pt-32 px-4 md:px-6">
+                <div className="relative z-10 min-h-[70vh]">
+                  {children}
+                </div>
+                <Footer />
+              </main>
+
+            </ConvexClientProvider>
+          </ClerkProvider>
         </ThemeProvider>
-        
       </body>
     </html>
   );

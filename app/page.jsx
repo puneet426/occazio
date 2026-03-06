@@ -9,7 +9,7 @@ export const metadata = {
   author:[{name:"Puneet Tiwari"}],
   keywords:["occazi", "occazio","event management", "codeforge", "niamt","codeforgeniamt","puneet","puneet tiwari"],
   icons:{
-    icon:"/occazi.png"
+    icon:"/occazi.jpg"
   },
 };
 
@@ -31,7 +31,7 @@ export default function LandingPage() {
               Discover &<br />
               create amazing
               <br />
-              <span className="bg-linear-to-r from-blue-400 via-purple-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-linear-to-b from-white via-violet-200 to-violet-500 bg-clip-text text-transparent">
                 events.
               </span>
             </h1>
@@ -49,34 +49,57 @@ export default function LandingPage() {
           </div>
 
           {/* Right - 3D Phone Mockup */}
-          <div className="relative block">
-            <Image
-              src="/hero.png"
-              // src="/hero.gif"
-              alt="react meetup"
-              width={700}
-              height={700}
-              className="w-full h-auto"
-              priority
-            />
-            {/* <video
-              width="100%"
-              height="100%"
-              loop
-              playsInline
-              autoPlay
-              muted
-              className="w-full h-auto"
-            >
-              <source
-                src="https://cdn.lu.ma/landing/phone-dark.mp4"
-                type="video/mp4;codecs=hvc1"
-              />
-              <source
-                src="https://cdn.lu.ma/landing/phone-dark.webm"
-                type="video/webm"
-              />
-            </video> */}
+          {/* Right - Premium Vignette Asset */}
+          <div className="relative flex justify-center items-center group">
+  {/* Pulsing background glow to mimic festival lighting */}
+  <div className="absolute -z-10 w-[600px] h-[600px] bg-violet-600/15 blur-[140px] rounded-full animate-pulse duration-[4000ms]" />
+  
+  {/* The Festival Prism Container */}
+  <div className="relative p-12 md:p-16 rounded-[3rem] border border-white/[0.08] bg-white/[0.01] backdrop-blur-3xl shadow-[0_30px_70px_rgba(0,0,0,0.9)] overflow-hidden transition-all duration-700 hover:border-violet-500/30">
+    
+    {/* Floating "Technical" Grid lines within the card to represent NIAMT's tech spirit */}
+    <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+
+    {/* Top Rim Highlight (Amethyst) */}
+    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-violet-400/50 to-transparent" />
+
+    <div className="flex flex-col items-center relative z-10">
+      {/* Fest Category Tag */}
+      <span className="mb-4 px-3 py-1 rounded-full border border-violet-500/20 bg-violet-500/10 text-[10px] uppercase tracking-[0.3em] text-violet-300 font-bold">
+        Cultural & Technical Fest
+      </span>
+
+      {/* Main Fest Title */}
+      <h2 className="text-5xl md:text-7xl font-black tracking-[0.15em] uppercase text-center
+                     bg-linear-to-b from-white via-zinc-100 to-violet-500 bg-clip-text text-transparent drop-shadow-2xl">
+        JINKS<br/>PRANAV
+      </h2>
+      
+      {/* Decorative Divider */}
+      <div className="flex items-center gap-4 mt-8 w-full">
+        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="w-2 h-2 rounded-full bg-violet-500 animate-ping" />
+        <div className="h-px flex-1 bg-gradient-to-l from-transparent via-white/10 to-transparent" />
+      </div>
+      
+      {/* Host Branding */}
+      <p className="mt-8 text-[11px] tracking-[0.4em] text-zinc-400 uppercase font-medium text-center">
+         <span className="text-white">NIAMT Ranchi</span>
+      </p>
+      <p className="mt-8 text-[11px] tracking-[0.4em] text-zinc-400 uppercase font-medium text-center">
+        Hosted Exclusively on <span className="text-white">Occazi</span>
+      </p>
+
+      {/* NIAMT Branding */}
+      
+    </div>
+
+    {/* Bottom Corner "Glow" for extra depth */}
+    <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-violet-600/20 blur-3xl rounded-full" />
+  </div>
+            
+
+            
           </div>
         </div>
       </section>
