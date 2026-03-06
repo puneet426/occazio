@@ -37,8 +37,7 @@ export default function RootLayout({ children }) {
 </div>
 
               <Header />
-
-              <main className="relative min-h-screen container mx-auto pt-32 px-4 md:px-6">
+              <main className="relative min-h-screen container mx-auto pt-36 md:pt-24 px-4 md:px-6">
                 <div className="relative z-10 min-h-[70vh]">
                   {children}
                 </div>

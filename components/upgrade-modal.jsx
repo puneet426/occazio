@@ -272,13 +272,14 @@ export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-4xl">
-        <DialogHeader className="text-center sm:text-center">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <Sparkles className="w-6 h-6 text-purple-500" />
-            <DialogTitle className="text-2xl">Choose Your Plan</DialogTitle>
+      {/* Added max-h-[90vh] and overflow-y-auto for mobile scrolling */}
+      <DialogContent className="w-[95vw] sm:max-w-4xl max-h-[90vh] overflow-y-auto p-4 md:p-6">
+        <DialogHeader className="text-center sm:text-center mt-2">
+          <div className="flex items-center justify-center gap-2 mb-1 md:mb-2">
+            <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-purple-500" />
+            <DialogTitle className="text-xl md:text-2xl">Choose Your Plan</DialogTitle>
           </div>
-          <DialogDescription className="text-center">
+          <DialogDescription className="text-center text-xs md:text-sm px-2">
             {trigger === "header" && "Unlock the full potential of Occazio. "}
             {trigger === "limit" && "You've reached your free event limit. "}
             {trigger === "color" && "Custom theme colors are a Pro feature. "}
@@ -286,49 +287,54 @@ export default function UpgradeModal({ isOpen, onClose, trigger = "limit" }) {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
-          <div className="border rounded-xl p-6 flex flex-col">
-            <h3 className="text-lg font-semibold text-foreground">Basic</h3>
-            <p className="text-3xl font-bold mt-2 mb-4">₹0<span className="text-sm font-normal text-muted-foreground"> / forever</span></p>
-            <ul className="text-sm text-muted-foreground space-y-3 flex-1">
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500"/> Up to 5 free events</li>
-              <li className="flex items-center gap-2 text-muted-foreground/50"><X className="w-4 h-4"/> No custom themes</li>
-              <li className="flex items-center gap-2 text-muted-foreground/50"><X className="w-4 h-4"/> Standard support</li>
+        {/* Grid stacks to 1 column on mobile, 3 columns on medium screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-2 md:py-4">
+          
+          {/* Basic Card */}
+          <div className="border rounded-xl p-4 md:p-6 flex flex-col">
+            <h3 className="text-base md:text-lg font-semibold text-foreground">Basic</h3>
+            <p className="text-2xl md:text-3xl font-bold mt-1 md:mt-2 mb-3 md:mb-4">₹0<span className="text-xs md:text-sm font-normal text-muted-foreground"> / forever</span></p>
+            <ul className="text-xs md:text-sm text-muted-foreground space-y-2 md:space-y-3 flex-1">
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-green-500"/> Up to 1 free event</li>
+              <li className="flex items-center gap-2 text-muted-foreground/50"><X className="w-3 h-3 md:w-4 md:h-4"/> No custom themes</li>
+              <li className="flex items-center gap-2 text-muted-foreground/50"><X className="w-3 h-3 md:w-4 md:h-4"/> Standard support</li>
             </ul>
-            <Button variant="outline" className="w-full mt-6" disabled>Current Plan</Button>
+            <Button variant="outline" className="w-full mt-4 md:mt-6 text-xs md:text-sm h-9 md:h-10" disabled>Current Plan</Button>
           </div>
 
-          <div className="border border-purple-500/50 bg-purple-500/5 rounded-xl p-6 flex flex-col relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-purple-500 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">Recommended</div>
-            <h3 className="text-lg font-semibold text-foreground">Pro Trial</h3>
-            <p className="text-3xl font-bold mt-2 mb-1">₹0<span className="text-sm font-normal text-muted-foreground"> / 3 months</span></p>
-            <p className="text-xs text-purple-600 mb-4 font-medium">No Credit Card Required</p>
-            <ul className="text-sm text-muted-foreground space-y-3 flex-1">
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-500"/> Unlimited events</li>
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-500"/> Custom theme colors</li>
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-purple-500"/> Priority support</li>
+          {/* Free Trial Card */}
+          <div className="border border-purple-500/50 bg-purple-500/5 rounded-xl p-4 md:p-6 flex flex-col relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-purple-500 text-white text-[9px] md:text-[10px] font-bold px-2 py-1 md:px-3 rounded-bl-lg uppercase tracking-wider">Recommended</div>
+            <h3 className="text-base md:text-lg font-semibold text-foreground">Pro Trial</h3>
+            <p className="text-2xl md:text-3xl font-bold mt-1 md:mt-2 mb-1">₹0<span className="text-xs md:text-sm font-normal text-muted-foreground"> / 3 months</span></p>
+            <p className="text-[10px] md:text-xs text-purple-600 mb-3 md:mb-4 font-medium">No Credit Card Required</p>
+            <ul className="text-xs md:text-sm text-muted-foreground space-y-2 md:space-y-3 flex-1">
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-purple-500"/> Unlimited events</li>
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-purple-500"/> Custom theme colors</li>
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-purple-500"/> Priority support</li>
             </ul>
-            <Button onClick={handleFreeTrial} variant="secondary" className="w-full mt-6 bg-purple-100 hover:bg-purple-200 text-purple-700" disabled={!!isLoading}>
-              {isLoading === "trial" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Start Free Trial"}
+            <Button onClick={handleFreeTrial} variant="secondary" className="w-full mt-4 md:mt-6 bg-purple-100 hover:bg-purple-200 text-purple-700 text-xs md:text-sm h-9 md:h-10" disabled={!!isLoading}>
+              {isLoading === "trial" ? <Loader2 className="w-3 h-3 md:w-4 md:h-4 animate-spin" /> : "Start Free Trial"}
             </Button>
           </div>
 
-          <div className="border rounded-xl p-6 flex flex-col">
-            <h3 className="text-lg font-semibold text-foreground">Occazio Pro</h3>
-            <p className="text-3xl font-bold mt-2 mb-4">₹200<span className="text-sm font-normal text-muted-foreground"> / month</span></p>
-            <ul className="text-sm text-muted-foreground space-y-3 flex-1">
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500"/> Unlimited events</li>
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500"/> Custom theme colors</li>
-              <li className="flex items-center gap-2"><Check className="w-4 h-4 text-green-500"/> Priority support</li>
+          {/* Pro Card */}
+          <div className="border rounded-xl p-4 md:p-6 flex flex-col">
+            <h3 className="text-base md:text-lg font-semibold text-foreground">Occazio Pro</h3>
+            <p className="text-2xl md:text-3xl font-bold mt-1 md:mt-2 mb-3 md:mb-4">₹200<span className="text-xs md:text-sm font-normal text-muted-foreground"> / month</span></p>
+            <ul className="text-xs md:text-sm text-muted-foreground space-y-2 md:space-y-3 flex-1">
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-green-500"/> Unlimited events</li>
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-green-500"/> Custom theme colors</li>
+              <li className="flex items-center gap-2"><Check className="w-3 h-3 md:w-4 md:h-4 text-green-500"/> Priority support</li>
             </ul>
-            <Button onClick={handleProUpgrade} className="w-full mt-6 bg-purple-600 hover:bg-purple-700 text-white" disabled={!!isLoading}>
-              {isLoading === "pro" ? <Loader2 className="w-4 h-4 animate-spin" /> : "Upgrade Now"}
+            <Button onClick={handleProUpgrade} className="w-full mt-4 md:mt-6 bg-purple-600 hover:bg-purple-700 text-white text-xs md:text-sm h-9 md:h-10" disabled={!!isLoading}>
+              {isLoading === "pro" ? <Loader2 className="w-3 h-3 md:w-4 md:h-4 animate-spin" /> : "Upgrade Now"}
             </Button>
           </div>
         </div>
 
-        <div className="flex justify-center mt-2">
-          <Button variant="ghost" onClick={onClose} disabled={!!isLoading}>Maybe Later</Button>
+        <div className="flex justify-center mt-1 md:mt-2">
+          <Button variant="ghost" onClick={onClose} disabled={!!isLoading} className="text-xs md:text-sm h-8 md:h-10">Maybe Later</Button>
         </div>
       </DialogContent>
     </Dialog>
