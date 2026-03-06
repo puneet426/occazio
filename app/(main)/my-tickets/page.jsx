@@ -192,38 +192,36 @@ export default function MyTicketsPage() {
 
 
 /* eslint-disable react-hooks/purity */
+/* eslint-disable react-hooks/purity */
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { format } from "date-fns";
-import { Calendar, MapPin, Loader2, Ticket, CheckCircle2, Sparkles, User, Info } from "lucide-react"; // Added new icons
+import { Calendar, MapPin, Loader2, Ticket, CheckCircle2 } from "lucide-react";
 import { useConvexQuery, useConvexMutation } from "@/hooks/use-convex-query";
 import { api } from "@/convex/_generated/api";
 import { toast } from "sonner";
 import QRCode from "react-qr-code";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge"; // Ensure Badge is imported
+import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
-  DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import Link from "next/link";
 import EventCard from "@/components/event-card";
 
 export default function MyTicketsPage() {
-  const router = useRouter();
   const [selectedTicket, setSelectedTicket] = useState(null);
 
   const { data: registrations, isLoading } = useConvexQuery(
     api.registrations.getMyRegistrations
   );
 
-  const { mutate: cancelRegistration, isLoading: isCancelling } =
+  const { mutate: cancelRegistration } =
     useConvexMutation(api.registrations.cancelRegistration);
 
   const handleCancelRegistration = async (registrationId) => {
@@ -324,100 +322,114 @@ export default function MyTicketsPage() {
         )}
       </div>
 
-      {/* ENHANCED QR Code Modal */}
+      {/* 🎫 PREMIUM DARK THEMED TICKET MODAL */}
       {selectedTicket && (
         <Dialog
           open={!!selectedTicket}
           onOpenChange={() => setSelectedTicket(null)}
         >
-          <DialogContent className="sm:max-w-md p-0 overflow-hidden border-none shadow-2xl">
-            {/* 1. Header with Branding */}
-            <div className="bg-purple-600/10 p-6 pb-4 border-b">
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-purple-500" />
-                  <span className="text-2xl font-bold text-purple-600">occazi</span>
-                </div>
-                <Badge variant={selectedTicket.paymentStatus === "paid" ? "default" : "secondary"} className="text-xs px-3 py-1">
-                  {selectedTicket.paymentStatus === "paid" ? "Paid" : "Free"}
-                </Badge>
-              </div>
+          {/* Responsive sizing and dark background wrapper */}
+          <DialogContent 
+            className="w-[95vw] sm:max-w-md p-0 overflow-hidden border border-purple-500/30 shadow-[0_0_50px_-12px_rgba(147,51,234,0.4)] bg-[#0B0A10] text-slate-200 rounded-3xl"
+            hideCloseButton // Optional: hides default close X so it doesn't overlap your dark theme
+          >
+            {/* Background Glow Effects (Mimicking your uploaded image) */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-3xl">
+              {/* Top Purple Glow */}
+              <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[60%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-800/40 via-transparent to-transparent blur-2xl" />
+              {/* Bottom Blue Glow */}
+              <div className="absolute bottom-[-20%] right-[-20%] w-[100%] h-[60%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-800/30 via-transparent to-transparent blur-2xl" />
+              {/* Subtle metallic grain overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent mix-blend-overlay opacity-30 border-t border-white/20 rounded-3xl" />
             </div>
 
-            {/* 2. Main Ticket Body */}
-            <div className="p-6 space-y-6">
-              {/* Attendee Info */}
-              <div className="text-center">
-                <p className="font-semibold text-2xl mb-1 tracking-tight">
-                  {selectedTicket.attendeeName}
-                </p>
-                <div className="flex items-center justify-center gap-1.5 text-sm text-muted-foreground bg-muted px-3 py-1.5 rounded-full w-fit mx-auto mt-2">
-                   <User className="w-3.5 h-3.5"/>
-                   <span>Attendee</span>
-                </div>
-              </div>
-
-              {/* Dotted Divider for Ticket Effect */}
-              <div className="border-t-2 border-dashed border-muted"/>
-
-              {/* Event Title and Info */}
-              <div>
-                <div className="flex items-center gap-2 mb-2 text-sm text-purple-600 font-medium">
-                  <Info className="w-4 h-4"/>
-                   Event Details
-                </div>
-                <h3 className="font-bold text-xl leading-tight text-foreground">
-                  {selectedTicket.event.title}
-                </h3>
-              </div>
+            <div className="relative z-10 flex flex-col h-full">
               
-              {/* QR Code Section */}
-              <div className="flex flex-col items-center gap-4 bg-muted/50 p-6 rounded-2xl border border-muted-foreground/10 mx-auto w-fit">
-                  <div className="flex justify-center p-5 bg-white border-4 border-muted rounded-xl shadow-inner mx-auto">
-                    <QRCode value={selectedTicket.qrCode} size={200} level="H" />
-                  </div>
-                   <div className="text-center">
-                    <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider font-medium">Ticket ID</p>
-                    <p className="font-mono text-sm bg-muted px-3 py-1 rounded-md w-fit mx-auto border border-muted-foreground/10">{selectedTicket.qrCode}</p>
-                   </div>
+              {/* 1. BRANDING HEADER */}
+              <div className="flex items-center justify-between p-5 md:p-6 border-b border-white/10 bg-black/20 backdrop-blur-md">
+                {/* CSS recreation of your Ring Logo + OCCAZI */}
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-full border-[3px] border-t-purple-400 border-r-purple-600 border-b-blue-600 border-l-purple-400 shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
+                  <DialogTitle className="text-xl md:text-2xl font-bold tracking-[0.2em] text-transparent bg-clip-text bg-gradient-to-r from-purple-100 to-slate-400 uppercase m-0 p-0">
+                    OCCAZI
+                  </DialogTitle>
+                </div>
+                {/* VIP/Standard Badge */}
+                <Badge className="bg-purple-500/20 text-purple-200 border border-purple-500/40 uppercase tracking-widest text-[10px] md:text-xs px-3 py-1 rounded-full shadow-[0_0_10px_rgba(168,85,247,0.2)]">
+                  {selectedTicket.paymentStatus === "paid" ? "VIP Access" : "Standard"}
+                </Badge>
               </div>
 
-               {/* Location/Time Details Section */}
-              <div className="bg-purple-600/5 p-5 rounded-xl space-y-4 text-sm border border-purple-600/10">
-                <div className="flex items-center gap-3.5">
-                  <div className="p-2 bg-purple-100 rounded-lg text-purple-600">
-                    <Calendar className="w-4 h-4" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="font-medium text-foreground">Date & Time</span>
-                    <span className="text-muted-foreground">
-                        {format(selectedTicket.event.startDate, "PPP, h:mm a")}
-                    </span>
+              {/* 2. TICKET CONTENT */}
+              <div className="p-6 md:p-8 space-y-6">
+                
+                {/* Attendee Info */}
+                <div className="text-center space-y-1">
+                  <p className="text-[10px] md:text-xs text-purple-300/60 uppercase tracking-[0.3em] font-semibold">
+                    Admit One
+                  </p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight drop-shadow-md">
+                    {selectedTicket.attendeeName}
+                  </h3>
+                </div>
+
+                {/* Event Name */}
+                <div className="bg-white/5 rounded-2xl p-4 border border-white/10 backdrop-blur-sm shadow-inner text-center">
+                  <h4 className="font-semibold text-lg md:text-xl text-purple-100 leading-snug drop-shadow-sm">
+                    {selectedTicket.event.title}
+                  </h4>
+                </div>
+
+                {/* QR Code (Must stay white for easy scanning at the door) */}
+                <div className="flex justify-center">
+                  <div className="p-4 bg-white rounded-2xl shadow-[0_0_30px_rgba(255,255,255,0.15)] ring-4 ring-white/10">
+                    {/* Size slightly scales up on desktop */}
+                    <QRCode value={selectedTicket.qrCode} size={256} level="H" className="w-40 h-40 md:w-48 md:h-48" />
                   </div>
                 </div>
-                <div className="flex items-center gap-3.5">
-                  <div className="p-2 bg-purple-100 rounded-lg text-purple-600">
-                    <MapPin className="w-4 h-4" />
+
+                {/* Ticket ID */}
+                <div className="text-center -mt-2">
+                  <p className="font-mono text-xs md:text-sm text-slate-300 bg-black/50 px-4 py-1.5 rounded-lg inline-block border border-white/10 shadow-inner tracking-wider">
+                    {selectedTicket.qrCode}
+                  </p>
+                </div>
+
+                {/* Date & Location Details */}
+                <div className="grid grid-cols-2 gap-3 md:gap-4 text-sm mt-4">
+                  <div className="bg-black/30 p-3 md:p-4 rounded-xl border border-white/5 backdrop-blur-md">
+                    <div className="flex items-center gap-2 text-purple-400 mb-2">
+                      <Calendar className="w-4 h-4 md:w-5 md:h-5" />
+                      <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-purple-300/80">Date</span>
+                    </div>
+                    <p className="text-slate-200 text-xs md:text-sm font-medium">
+                      {format(selectedTicket.event.startDate, "MMM d, yyyy")}
+                      <br />
+                      <span className="text-slate-400">{format(selectedTicket.event.startDate, "h:mm a")}</span>
+                    </p>
                   </div>
-                  <div className="flex flex-col">
-                    <span className="font-medium text-foreground">Location</span>
-                    <span className="text-muted-foreground">
-                        {selectedTicket.event.locationType === "online"
+
+                  <div className="bg-black/30 p-3 md:p-4 rounded-xl border border-white/5 backdrop-blur-md">
+                    <div className="flex items-center gap-2 text-blue-400 mb-2">
+                      <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+                      <span className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-blue-300/80">Location</span>
+                    </div>
+                    <p className="text-slate-200 text-xs md:text-sm font-medium break-words line-clamp-2">
+                      {selectedTicket.event.locationType === "online"
                         ? "Online Event"
-                        : `${selectedTicket.event.city}, ${
-                            selectedTicket.event.state ||
-                            selectedTicket.event.country
-                            }`}
-                    </span>
+                        : `${selectedTicket.event.city}, ${selectedTicket.event.state || selectedTicket.event.country}`}
+                    </p>
                   </div>
                 </div>
-              </div>
 
-               {/* Footnote instruction */}
-              <p className="text-xs text-muted-foreground text-center flex items-center justify-center gap-1.5 pt-2">
-                <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
-                Present this QR code for check-in at the entrance
-              </p>
+                <div className="pt-2">
+                  <p className="text-[10px] md:text-xs text-slate-400/80 text-center flex items-center justify-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-purple-500" />
+                    Present this secure digital pass for entry
+                  </p>
+                </div>
+
+              </div>
             </div>
           </DialogContent>
         </Dialog>
