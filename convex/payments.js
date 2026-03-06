@@ -203,7 +203,7 @@ export const createCheckout = action({
         name: args.name,
         email: args.email,
       },
-      return_url: "https://occazi.in/", 
+      return_url: "https://occazi.in/my-tickets", 
     };
 
     try {
@@ -225,7 +225,7 @@ export const fulfillTicket = internalMutation({
     email: v.optional(v.string()) 
   },
   handler: async (ctx, args) => {
-    const fullToken = `https://evolved-malamute-67.clerk.accounts.dev|${args.userId}`;
+    const fullToken = `https://clerk.occazi.in|${args.userId}`;
     const user = await ctx.db
       .query("users")
       .filter((q) => q.eq(q.field("tokenIdentifier"), fullToken))
@@ -258,7 +258,7 @@ export const fulfillTicket = internalMutation({
 export const fulfillProUpgrade = internalMutation({
   args: { userId: v.string() },
   handler: async (ctx, args) => {
-    const fullToken = `https://evolved-malamute-67.clerk.accounts.dev|${args.userId}`;
+    const fullToken = `https://clerk.occazi.in|${args.userId}`;
     const user = await ctx.db
       .query("users")
       .filter((q) => q.eq(q.field("tokenIdentifier"), fullToken))
