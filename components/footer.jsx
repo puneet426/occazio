@@ -42,7 +42,7 @@ const Footer = () => {
       
       {/* Left: Author & Legal */}
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm text-gray-400">
-        <span>Made by Anurag Kumar & Amrit</span>
+        <span>Made by Anurag Kumar & Amrit Singh</span>
         <span className="hidden md:inline">|</span>
         <Link href="/terms" className="hover:text-white transition-colors">
           Terms & Conditions
