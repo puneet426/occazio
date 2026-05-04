@@ -42,7 +42,7 @@ const Footer = () => {
       
       {/* Left: Author & Legal */}
       <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 text-sm text-gray-400">
-        <span>Made by Puneet Tiwari</span>
+        <span>Made by Anurag Kumar & Amrit</span>
         <span className="hidden md:inline">|</span>
         <Link href="/terms" className="hover:text-white transition-colors">
           Terms & Conditions
@@ -61,7 +61,7 @@ const Footer = () => {
       {/* Right: Socials */}
       <div className="flex gap-4 items-center">
         <a
-          href="https://www.linkedin.com/in/puneet-tiwari-0075952a6/"
+          href="/"
           className="text-gray-400 hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
@@ -69,7 +69,7 @@ const Footer = () => {
           <Linkedin className="w-5 h-5" />
         </a>
         <a
-          href="https://www.instagram.com/puneettiwari368?igsh=MXFkbGI5cG8wNHdvNA=="
+          href="/"
           className="text-gray-400 hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
@@ -77,7 +77,7 @@ const Footer = () => {
           <Instagram className="w-5 h-5" />
         </a>
         <a 
-          href="https://x.com/Puneet626" 
+          href="/" 
           className="text-gray-400 hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
