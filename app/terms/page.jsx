@@ -95,8 +95,8 @@ export default function TermsAndConditions() {
             <p>
               If you have any questions or concerns about these Terms and Conditions, please contact us at:
               <br />
-              <a href="mailto:occazi@gmail.com" className="text-purple-500 hover:text-purple-400 font-medium mt-2 inline-block">
-                occazi@gmail.com
+              <a href="mailto:info.occazi@gmail.com" className="text-purple-500 hover:text-purple-400 font-medium mt-2 inline-block">
+                info.occazi@gmail.com
               </a>
             </p>
           </section>
