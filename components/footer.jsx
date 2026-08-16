@@ -27,7 +27,7 @@ const Footer = () => {
       {/* Right: Socials */}
       <div className="flex gap-4 items-center">
         <a
-          href="https://www.linkedin.com/in/flawlesspuneet/"
+          href="https://www.linkedin.com/in/puneet426/"
           className="text-gray-400 hover:text-white transition-colors"
           target="_blank"
           rel="noopener noreferrer"
