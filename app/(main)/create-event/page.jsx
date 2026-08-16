@@ -885,7 +885,16 @@ export default function CreateEventPage() {
         </div>
 
         {/* RIGHT: Form */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+       <form
+  onSubmit={handleSubmit(onSubmit, (formErrors) => {
+    
+    const firstError = Object.values(formErrors)[0];
+    toast.error(
+      firstError?.message || "Please fill in all required fields before submitting."
+    );
+  })}
+  className="space-y-8"
+>
           {/* Title */}
           <div>
             <Input
@@ -1029,7 +1038,7 @@ export default function CreateEventPage() {
                 )}
               />
 
-              <Controller
+         <Controller
                 control={control}
                 name="city"
                 render={({ field }) => (
@@ -1056,6 +1065,11 @@ export default function CreateEventPage() {
                 )}
               />
             </div>
+            {(errors.state || errors.city) && (
+              <p className="text-sm text-red-400">
+                {errors.state?.message || errors.city?.message}
+              </p>
+            )}
 
             <div className="space-y-2 mt-6">
               <Label className="text-sm">Venue Details</Label>
